@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.AreaChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.SVGPath?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@AppView.css" xmlns="http://javafx.com/javafx/8.0.72" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.DataController">
+   <children>
+      <TabPane layoutX="43.0" layoutY="14.0" prefHeight="400.0" prefWidth="600.0" stylesheets="@AppView.css" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <tabs>
+          <Tab text="Главная">
+               <content>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <SplitPane dividerPositions="0.5" layoutX="110.0" layoutY="50.0" orientation="VERTICAL" prefHeight="371.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                          <items>
+                            <AnchorPane maxHeight="250.0" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="190.0" prefWidth="90.0">
+                                 <children>
+                                    <VBox layoutX="81.0" layoutY="17.0" prefHeight="200.0" prefWidth="598.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <children>
+                                          <HBox maxHeight="-Infinity" prefHeight="100.0">
+                                             <children>
+                                                <SVGPath content="m 3.3191 70.247 c -4.7115 -1.793 -4.1815 -4.459 7.2399 -36.413 c 9.376 -26.232 10.516 -28.837 13.517 -30.893 c 3.2657 -2.2377 3.379 -2.2434 32.494 -1.6458 c 26.132 0.53636 29.569 1.0808 30.483 2.3316 c 0.91458 1.2508 1.1569 2.2832 0.88691 3.3885 c -4.6799 19.157 -9.9009 34.066 -19.237 56.732 c -2.8743 6.9783 -3.2422 7.24 -35.584 7.1498 c -15.565 -0.043 -28.975 -0.336 -29.8 -0.65 Z m 14.391 -8.2914 c 2.592 -6.4781 2.3221 -6.9798 -3.7556 -6.9798 h -5.3641 l -1.6359 4.2834 c -2.4571 6.437 -2.3003 6.717 3.757 6.717 c 5.3611 0 5.4005 -0.0226 7 -4.0202 Z m 15.762 -1.066 c 1.8125 -5.9066 1.5304 -6.193 -5.6359 -5.7235 c -4.6735 0.30619 -4.7508 0.36815 -6.6221 5.3098 c -1.0414 2.75 -1.8938 5.1125 -1.8943 5.25 c -0.00044 0.1375 2.8325 0.25 6.2954 0.25 h 6.2962 Z m 15.154 0.336 c 0.93637 -2.6125 1.7003 -5.0875 1.6976 -5.5 c -0.003 -0.4125 -2.6626 -0.75 -5.911 -0.75 h -5.906 l -1.594 4.6781 c -0.8767 2.573 -1.594 5.048 -1.594 5.5 c 0 0 2.6111 0.82186 5.8025 0.82186 h 5.8024 Z m 13.953 3 c 0.8637 -0.9625 1.8835 -3.4375 2.2663 -5.5 l 0.6959 -3.75 h -5.6623 c -5.4489 0 -5.7124 0.12247 -6.9915 3.25 c -3.2342 7.908 -3.2894 7.75 2.7089 7.75 c 3.8898 0 5.8542 -0.49232 6.9828 -1.75 Z m -8.569 -17.75 c 1.2048 -3.3 2.2173 -6.3375 2.25 -6.75 s -2.6345 -0.75 -5.9271 -0.75 c -5.9046 0 -6.0067 0.0483 -7.4593 3.5248 c -0.81002 1.9386 -1.7707 5.1127 -2.1348 7.0535 l -0.66198 3.5287 l 5.8713 -0.30353 l 5.8713 -0.30352 Z m 13.045 5.25 c 0.99309 -1.2658 4.2642 -10.416 4.2642 -11.928 c 0 -0.45202 -2.6587 -0.82186 -5.9082 -0.82186 h -5.9082 l -2.0918 6.1942 c -1.1505 3.4068 -2.0918 6.5568 -2.0918 7 c 0 1.3303 10.66 0.92685 11.736 -0.44417 Z m -43.645 -5.25 c 2.7615 -7.8697 2.5869 -8.5024 -2.3405 -8.4847 c -5.58 0.0201 -6.716 0.86706 -8.9095 6.6428 c -2.767 7.2856 -2.6601 7.4851 3.8275 7.1418 l 5.668 -0.2999 Z m 15.596 -1.166 c 2.345 -6.5909 2.0622 -7.3088 -2.6928 -6.8368 c -1.3715 0.13614 -3.6489 0.30495 -5.061 0.37515 c -2.1711 0.10792 -2.8377 0.93798 -4.319 5.3776 c -0.96337 2.8875 -1.9906 5.8351 -2.2827 6.5503 c -0.40999 1.0037 0.91642 1.2318 5.8152 1 l 6.3464 -0.30032 Z m -11.951 -10.584 c 1.0106 -1.2881 4.2642 -10.427 4.2642 -11.978 c 0 -0.47947 -2.527 -0.73681 -5.6155 -0.57186 l -5.6155 0.2999 l -2.2478 6.2201 c -1.2363 3.421 -2.0093 6.4585 -1.7178 6.75 c 1.0753 1.0753 9.9842 0.48854 10.932 -0.72006 Z m 17.192 -4.2875 c 3.1331 -8.3739 3.027 -8.6121 -3.6782 -8.2624 l -5.75 0.2999 l -2.1375 6 c -1.1756 3.3 -1.9366 6.3375 -1.691 6.75 c 0.24558 0.4125 2.8626 0.75 5.8156 0.75 h 5.3691 Z m 15.802 -1.2502 c 2.5709 -7.2269 2.3542 -7.5154 -5.276 -7.0221 c -4.7717 0.30851 -4.7992 0.33079 -6.5454 5.3098 c -2.9272 8.346 -2.7886 8.6457 3.838 8.2999 l 5.7466 -0.2999 Z m 15.136 0.93506 c 1.1737 -3.219 2.134 -6.369 2.134 -7 c 0 -0.73365 -2.1303 -1.1473 -5.9082 -1.1473 h -5.9082 l -2.0918 6.1942 c -1.1505 3.4068 -2.0918 6.5568 -2.0918 7 c 0 0.44321 2.6397 0.80583 5.866 0.80583 h 5.866 Z m 2.8038 -10.922 c 1.835 -1.1673 5.5512 -11.404 4.5158 -12.44 c -0.49861 -0.49861 -3.1068 -0.76685 -5.7961 -0.59608 c -4.478 0.28436 -5.0317 0.6051 -6.5785 3.8105 c -0.92892 1.925 -1.9832 4.7096 -2.3428 6.188 c -0.62461 2.5676 -0.45947 2.7053 3.689 3.0753 c 2.3886 0.21303 4.5678 0.45905 4.8428 0.54672 c 0.275 0.0877 1.0264 -0.17546 1.6698 -0.58472 Z m -43.104 -5.4753 c 0.94931 -2.8875 1.9336 -5.8125 2.1874 -6.5 c 0.32989 -0.89383 -0.94969 -1.25 -4.4907 -1.25 c -5.5242 0 -7.239 1.2971 -9.1204 6.8992 c -1.9279 5.7406 -1.6754 6.1008 4.278 6.1008 h 5.4196 Z m 15.525 -0.25 c 2.5907 -7.3815 4.42 -7.5 -3.9562 -7.5 h -5.866 l -2.134 5.8527 c -1.1737 3.219 -2.134 6.1654 -2.134 6.5477 c 0 0.38227 2.7754 0.56107 6.1676 0.39733 l 6.1676 -0.29772 Z m 15.227 0.16211 c 2.4645 -7.8183 2.4724 -7.8035 -4.0118 -7.462 l -5.6944 0.2999 l -2.3056 5.9638 c -1.2681 3.2801 -2.3056 6.0926 -2.3056 6.25 c 0 0.15744 2.8428 0.28625 6.3174 0.28625 h 6.3174 Z" />
+                                                <SVGPath fx:id="generation1" content="m 1.0245 23.987 c 0 -1.1126 1.6118 -4.1338 3.5818 -6.7138 l 3.5818 -4.691 l -3.651 -4.4556 c -2.1398 -2.6113 -3.5189 -5.2846 -3.3318 -6.4584 c 0.25768 -1.6168 1.1512 -0.92374 4.6366 3.5966 c 2.3746 3.0797 4.5241 6.138 4.7767 6.7963 c 0.3476 0.90582 -6.0311 10.301 -9.1871 13.532 c -0.22387 0.22916 -0.40703 -0.49363 -0.40703 -1.6062 Z m 9 0.26613 c 0 -0.78288 1.575 -3.4868 3.5 -6.0087 s 3.5 -5.0584 3.5 -5.6366 c 0 -0.57824 -1.575 -3.1141 -3.5 -5.6351 c -3.2781 -4.2932 -4.7128 -8.1638 -2.5248 -6.8116 c 0.53633 0.33147 3.0297 3.2727 5.5408 6.5361 l 4.5657 5.9334 l -4.7908 6.4818 c -4.8412 6.5499 -6.2908 7.7345 -6.2908 5.1406 Z m 10.01 -0.3266 c 0.005 -0.9625 1.5803 -3.7258 3.5 -6.1407 s 3.4903 -4.6046 3.4903 -4.866 c 0 -0.26141 -1.6091 -2.6673 -3.5758 -5.3465 c -5.5357 -7.5411 -3.9114 -9.4234 1.8258 -2.1158 c 2.6125 3.3276 4.75 6.5723 4.75 7.2105 c 0 1.1517 -8.7122 13.008 -9.5584 13.008 c -0.24285 0 -0.43718 -0.7875 -0.43184 -1.75 Z" >
+                                                   <HBox.margin>
+                                                      <Insets left="20.0" right="20.0" top="20.0" />
+                                                   </HBox.margin></SVGPath>
+                                                <SVGPath content="m 10.322 24.968 v 4.1244 v 4.1203 h 31.953 h 31.957 v -4.1203 v -4.1244 h -31.957 h -31.953 Z m 1.7946 1.7986 h 30.158 h 30.158 v 2.3257 v 2.3257 h -30.158 h -30.158 v -2.3257 v -2.3257 Z m -1.8042 12.441 v -4.1203 h 31.933 h 31.933 v 4.1203 v 4.1204 h -31.933 h -31.933 Z m 0 10.301 v -4.1203 h 31.933 h 31.933 v 4.1203 v 4.1204 h -31.933 h -31.933 Z m 0 10.301 v -4.1204 h 31.933 h 31.933 v 4.1204 v 4.1202 h -31.933 h -31.933 Z m -10.302 -20.602 v -30.903 h 5.1504 h 5.1504 v -4.1203 v -4.1204 h 6.1805 h 6.1805 v 4.1204 v 4.1203 h 19.572 h 19.572 v -4.1203 v -4.1204 h 5.9402 h 5.9402 l -0.05634 8.2244 l 6.5243 0.016333 h 4.3132 v 30.903 v 30.903 h -19.572 h -19.572 v -2.0601 v -2.0602 h 17.511 h 17.512 v -26.782 v -26.782 h -38.113 h -38.113 v 26.782 v 26.782 h 17.511 h 17.511 v 2.0602 v 2.0601 h -19.572 h -19.572 Z m 10.302 -23.917 v 4.1204 v 4.1243 h 31.929 h 31.929 v -4.1243 v -4.1204 h -31.929 h -31.929 Z m 1.7986 1.7946 h 30.13 h 30.134 v 2.3258 v 2.3257 h -30.134 h -30.13 v -2.3257 v -2.3258 Z" />
+                                                <SVGPath fx:id="generation2" content="m 1.0245 23.987 c 0 -1.1126 1.6118 -4.1338 3.5818 -6.7138 l 3.5818 -4.691 l -3.651 -4.4556 c -2.1398 -2.6113 -3.5189 -5.2846 -3.3318 -6.4584 c 0.25768 -1.6168 1.1512 -0.92374 4.6366 3.5966 c 2.3746 3.0797 4.5241 6.138 4.7767 6.7963 c 0.3476 0.90582 -6.0311 10.301 -9.1871 13.532 c -0.22387 0.22916 -0.40703 -0.49363 -0.40703 -1.6062 Z m 9 0.26613 c 0 -0.78288 1.575 -3.4868 3.5 -6.0087 s 3.5 -5.0584 3.5 -5.6366 c 0 -0.57824 -1.575 -3.1141 -3.5 -5.6351 c -3.2781 -4.2932 -4.7128 -8.1638 -2.5248 -6.8116 c 0.53633 0.33147 3.0297 3.2727 5.5408 6.5361 l 4.5657 5.9334 l -4.7908 6.4818 c -4.8412 6.5499 -6.2908 7.7345 -6.2908 5.1406 Z m 10.01 -0.3266 c 0.005 -0.9625 1.5803 -3.7258 3.5 -6.1407 s 3.4903 -4.6046 3.4903 -4.866 c 0 -0.26141 -1.6091 -2.6673 -3.5758 -5.3465 c -5.5357 -7.5411 -3.9114 -9.4234 1.8258 -2.1158 c 2.6125 3.3276 4.75 6.5723 4.75 7.2105 c 0 1.1517 -8.7122 13.008 -9.5584 13.008 c -0.24285 0 -0.43718 -0.7875 -0.43184 -1.75 Z">
+                                                   <HBox.margin>
+                                                      <Insets left="20.0" right="20.0" top="20.0" />
+                                                   </HBox.margin></SVGPath>
+                                                 <SVGPath content="m 30.43 0.082031 v 3.3223 v 3.3242 l 1.994 -0.664 l 1.994 -0.6641 l 0.516 -2.6582 l 0.515 -2.6602 l -2.51 0.000031 h -2.509 Z m -20.534 6.0684 l -1.8008 1.1113 l -1.7988 1.1113 l 2.7441 3.033 l 2.744 3.032 l 1.715 1.695 l 3.209 -2.197 l -0.635 -0.846 c -1.894 -2.525 -6.1775 -6.9396 -6.1775 -6.9396 Z m 46.648 0.418 l -6.746 6.7146 l 1.842 1.612 l 6.687 -6.4907 l -1.783 -1.8359 Z m -22.912 6.1366 c -7.271 -0.122 -14.996 3.426 -18.166 9.557 c -4.349 8.41 -3.169 15.259 3.961 22.994 c 5.115 5.55 6.379 8.126 6.379 12.998 c 0 3.415 1.156 7.352 2.64 8.992 c 5.159 5.701 10.121 2.331 10.121 -6.875 c 0 -4.655 1.385 -7.564 6.311 -13.256 c 10.226 -11.814 9.91 -22.528 -0.912 -31.041 c -2.841 -2.234 -6.525 -3.305 -10.334 -3.369 Z m -0.5 3.229 c 16.602 0 20.772 24.719 5.092 30.185 c -5.727 1.996 -7.197 2.009 -11.926 0.104 c -4.985 -2.008 -9.104 -9.042 -9.104 -15.545 c 0 -7.535 7.793 -14.744 15.938 -14.744 Z m 6.722 11.203 c -0.206 -0.015 -0.57 0.471 -1.191 1.453 c -1.231 1.945 -1.845 1.962 -4.084 0.103 c -2.233 -1.853 -2.843 -1.853 -3.988 0 c -1.117 1.808 -1.788 1.826 -3.865 0.102 c -2.903 -2.409 -3.225 -1.22 -0.864 3.193 c 1.829 3.417 3.996 3.966 5.575 1.412 c 0.7 -1.133 1.799 -1.036 3.406 0.297 c 1.901 1.578 2.658 1.514 3.82 -0.322 c 0.797 -1.259 1.449 -3.366 1.449 -4.682 c 0 -1.025 -0.051 -1.542 -0.258 -1.556 Z m -39.73 3.25 v 1.595 v 1.596 h 3.9883 h 3.9863 v -1.596 v -1.595 h -3.9863 h -3.9883 Z m 57.42 0 v 1.595 v 1.596 h 3.189 h 3.192 v -1.596 v -1.595 h -3.192 h -3.189 Z m -43.4 17.304 l -3.772 3.543 l -3.7695 3.541 l 0.8906 1.442 l 1.084 1.529 c 2.2149 -1.942 7.2869 -7.269 7.2869 -7.269 l -0.861 -1.393 l -0.859 -1.393 Z m 38.052 0.166 l -1.595 1.594 l -1.594 1.596 l 2.955 3.265 l 2.955 3.266 l 1.594 -1.596 l 1.595 -1.595 l -2.955 -3.264 l -2.955 -3.266 Z m -18.271 4.704 c 0.867 0.01 1.677 0.127 2.217 0.345 v -0.002 l 1.962 0.795 l -4.785 -0.058 l -4.785 -0.059 l 2.822 -0.734 c 0.776 -0.203 1.701 -0.298 2.569 -0.287 Z m -0.93 8.085 c 0.166 -0.014 0.331 -0.013 0.496 0.006 c 0.392 0.046 0.763 0.244 1.09 0.465 c 0.376 0.255 0.963 0.965 0.963 0.965 s -2.022 -0.242 -3.039 -0.285 c -1.024 -0.043 -3.074 0.033 -3.074 0.033 s 1.368 -0.633 2.091 -0.838 c 0.481 -0.136 0.977 -0.303 1.473 -0.346 Z" />
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets />
+                                             </VBox.margin>
+                                             <padding>
+                                                <Insets bottom="30.0" left="100.0" right="30.0" top="30.0" />
+                                             </padding>
+                                          </HBox>
+                                          <GridPane>
+                                            <columnConstraints>
+                                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="294.0" minWidth="10.0" prefWidth="103.0" />
+                                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="525.0" minWidth="10.0" prefWidth="103.0" />
+                                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="525.0" minWidth="10.0" prefWidth="75.0" />
+                                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="525.0" minWidth="10.0" prefWidth="245.0" />
+                                            </columnConstraints>
+                                            <rowConstraints>
+                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                            </rowConstraints>
+                                             <children>
+                                                <Label text="Мощность" />
+                                                <Label fx:id="power" text="" GridPane.columnIndex="1" />
+                                                <Label text="Ток" GridPane.rowIndex="1" />
+                                                <Label fx:id="current" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                <Label text="Емкость" GridPane.columnIndex="2" />
+                                                <Label fx:id="capacity" text="" GridPane.columnIndex="3" />
+                                             </children>
+                                          </GridPane>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                            </AnchorPane>
+                            <AnchorPane maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="120.0" prefWidth="0.0">
+                                 <children>
+                                    <SplitPane dividerPositions="0.29797979797979796" prefHeight="120.0" prefWidth="598.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                      <items>
+                                        <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="300.0">
+                                             <children>
+                                                <Button layoutX="14.0" layoutY="23.0" mnemonicParsing="false" onAction="#startSolarGeneration" text="Включить" />
+                                                <Button layoutX="14.0" layoutY="59.0" mnemonicParsing="false" onAction="#closeSolarGeneration" text="Выключить" />
+                                             </children></AnchorPane>
+                                        <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="300.0">
+                                             <children>
+                                                <ListView prefHeight="200.0" prefWidth="300.0" />
+                                             </children>
+                                        </AnchorPane>
+                                      </items>
+                                    </SplitPane>
+                                 </children>
+                              </AnchorPane>
+                          </items>
+                        </SplitPane>
+                     </children></AnchorPane>
+               </content>
+          </Tab>
+          <Tab text="Статистика">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <AreaChart layoutX="36.0" layoutY="-29.0" prefHeight="371.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                          <xAxis>
+                            <CategoryAxis side="BOTTOM" />
+                          </xAxis>
+                          <yAxis>
+                            <NumberAxis side="LEFT" />
+                          </yAxis>
+                        </AreaChart>
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>
