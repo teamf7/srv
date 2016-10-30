@@ -25,8 +25,8 @@ public class SolarPanel implements Runnable {
 
     public void generation(){
         if(working){
-            generationPower = 25;//ThreadLocalRandom.current().nextInt(25, 35);
-            generationCurrent = 3;//ThreadLocalRandom.current().nextDouble(0.20, 5.6);
+            generationPower = ThreadLocalRandom.current().nextInt(25, 35);
+            generationCurrent = ThreadLocalRandom.current().nextDouble(0.20, 5.6);
         }
     }
 
@@ -51,6 +51,7 @@ public class SolarPanel implements Runnable {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+
     }
 
 }

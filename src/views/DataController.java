@@ -4,10 +4,10 @@ import data.SolarData;
 import data.SolarPanel;
 import javafx.animation.Animation;
 import javafx.animation.FadeTransition;
-import javafx.animation.Transition;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
 import javafx.scene.shape.SVGPath;
 import javafx.util.Duration;
 
@@ -28,9 +28,18 @@ public class DataController {
     @FXML
         private Label capacity;
     @FXML
+        private Label consumption;
+    @FXML
         private SVGPath generation1;
     @FXML
         private SVGPath generation2;
+    @FXML
+        private RadioButton rb1;
+    @FXML
+        private RadioButton rb2;
+    @FXML
+        private RadioButton rb3;
+
 
     private MainApp mainApp;
     private boolean startGenerator = true;
@@ -40,11 +49,11 @@ public class DataController {
     private SolarData data;
     private FadeTransition transition1;
     private FadeTransition transition2;
-    private SolarPanel panel1;
-    private SolarPanel panel2;
-    private SolarPanel panel3;
+    private SolarPanel[] solarPanels;
 
-    public DataController(){}
+    public DataController(){
+        solarPanels = new SolarPanel[3];
+    }
 
     @FXML
     private void initialize() {
@@ -62,26 +71,38 @@ public class DataController {
     public void startSolarGeneration() {
         System.out.println("start project");
         if (startGenerator) {
-            generation1.setVisible(true);
             generation2.setVisible(true);
             ScheduledThreadPoolExecutor exec = new ScheduledThreadPoolExecutor(3, r -> {
                 Thread t = new Thread(r);
                 t.setDaemon(true);
                 return t;
             });
-            panel1 = new SolarPanel(data, "Панель 1");
-            panel2 = new SolarPanel(data, "Панель 2");
-            panel3 = new SolarPanel(data, "Панель 3");
-
-            transition1 = new FadeTransition(Duration.millis(500), generation1);
+            solarPanels[0] = new SolarPanel(data, "Панель 1");
+            solarPanels[1] = new SolarPanel(data, "Панель 2");
+            solarPanels[2] = new SolarPanel(data, "Панель 3");
+            currentAnimation();
             transition2 = new FadeTransition(Duration.millis(500), generation2);
             animationSvgPath(transition1);
             animationSvgPath(transition2);
-            future1 = exec.scheduleAtFixedRate(panel1, 0, 1, TimeUnit.SECONDS);
-            future2 = exec.scheduleAtFixedRate(panel2, 0, 1, TimeUnit.SECONDS);
-            future3 = exec.scheduleAtFixedRate(panel3, 0, 1, TimeUnit.SECONDS);
+            future1 = exec.scheduleAtFixedRate(solarPanels[0], 0, 1, TimeUnit.SECONDS);
+            future2 = exec.scheduleAtFixedRate(solarPanels[1], 0, 1, TimeUnit.SECONDS);
+            future3 = exec.scheduleAtFixedRate(solarPanels[2], 0, 1, TimeUnit.SECONDS);
             startGenerator = false;
         }
+    }
+    public void updateSvg(double current){
+        if(current ==0 ){
+            System.out.println("Нет тока");
+        }
+    }
+
+    public void currentAnimation(){
+        generation1.setVisible(true);
+        transition1 = new FadeTransition(Duration.millis(500), generation1);
+    }
+    public void stopSolarAnimationSVG(){
+        transition1.stop();
+        generation1.setVisible(false);
     }
 
     public void animationSvgPath(FadeTransition transition){
@@ -91,31 +112,42 @@ public class DataController {
         transition.setAutoReverse(true);
         transition.play();
     }
+
     public void closeSolarGeneration(){
         startGenerator = true;
-        transition1.stop();
+        stopSolarAnimationSVG();
         transition2.stop();
-        generation1.setVisible(false);
         generation2.setVisible(false);
         future1.cancel(false);
         future2.cancel(false);
         future3.cancel(false);
     }
     public void closeFirstSolarGeneration(){
-        panel1.setStopGenerationPanel();
+        if(rb1.isSelected())
+            solarPanels[0].setStopGenerationPanel();
+        if(rb2.isSelected())
+            solarPanels[1].setStopGenerationPanel();
+        if(rb3.isSelected())
+            solarPanels[2].setStopGenerationPanel();
     }
     public void startFirstSolarGeneration(){
-        panel1.setWorkGenerationPanel();
+        if(rb1.isSelected())
+            solarPanels[0].setWorkGenerationPanel();
+        if(rb2.isSelected())
+            solarPanels[1].setWorkGenerationPanel();
+        if(rb3.isSelected())
+            solarPanels[2].setWorkGenerationPanel();
     }
 
 
-    public void setLabel(String p,String c,String cap){
+    public void setLabel(String p,String c,String cap,String cons){
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
                 power.setText(p);
                 current.setText(c);
                 capacity.setText(cap);
+                consumption.setText(cons);
             }
         });
     }

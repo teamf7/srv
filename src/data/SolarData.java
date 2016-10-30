@@ -13,7 +13,9 @@ public class SolarData {
     private double current = 0;
     private DataController data;
     private Battery battery;
-    int count=0;
+    private int  count=0;
+    private double consuption = 0;
+
     public SolarData(DataController data){
         this.data= data;
         battery = new Battery();
@@ -21,23 +23,31 @@ public class SolarData {
 
     public void update(int power, double current) throws InterruptedException {
         synchronized (this){
-            Thread.sleep(500);
             this.power += power;
             this.current += current;
-            setLabel();
             count++;
+            if(count > 2)
+                setLabel();
+                data.updateSvg(current);
         }
     }
 
+    public void setConsuption() {
+        this.consuption = Consumption.consumption();
+    }
+
     private void setLabel() {
-        if(count > 2) {
             battery.generationCurrent(current);
-            DecimalFormat format = new DecimalFormat("##.#");
-            data.setLabel(Integer.toString(power), format.format(current), format.format(battery.getCapacity()));
+            System.out.println("После генерация " + battery.getCapacity());
+        setConsuption();
+            battery.consumptionCurrent(consuption);
+            System.out.println("После потребления "+battery.getCapacity());
+            DecimalFormat format1 = new DecimalFormat("##.#");
+            DecimalFormat format2 = new DecimalFormat("##");
+            data.setLabel(Integer.toString(power), format1.format(current), format2.format(battery.getCapacity()), format2.format(consuption));
             count = 0;
             this.power = 0;
             this.current = 0;
-        }
     }
 
 

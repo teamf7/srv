@@ -1,6 +1,5 @@
-package newdata.data;
+package data;
 
-import java.text.DecimalFormat;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
@@ -11,8 +10,7 @@ public class Consumption {
     public Consumption() {
     }
 
-    public double generation(){
-        return ThreadLocalRandom.current().nextDouble(0.20, 5.6);
+    public static double consumption() {
+        return ThreadLocalRandom.current().nextDouble(1, 4);
     }
-
 }
