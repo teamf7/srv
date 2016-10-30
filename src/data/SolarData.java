@@ -19,19 +19,22 @@ public class SolarData {
         battery = new Battery();
     }
 
-    public void update(int power, double current){
-        this.power +=power;
-        this.current +=current;
-        setLabel();
-        count++;
+    public void update(int power, double current) throws InterruptedException {
+        synchronized (this){
+            Thread.sleep(500);
+            this.power += power;
+            this.current += current;
+            setLabel();
+            count++;
+        }
     }
 
     private void setLabel() {
-        if(count == 3){
-            battery.addCurrent(current);
+        if(count > 2) {
+            battery.generationCurrent(current);
             DecimalFormat format = new DecimalFormat("##.#");
-            data.setLabel(Integer.toString(power),format.format(current),format.format(battery.getCapacity()));
-            count =0;
+            data.setLabel(Integer.toString(power), format.format(current), format.format(battery.getCapacity()));
+            count = 0;
             this.power = 0;
             this.current = 0;
         }

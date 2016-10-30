@@ -40,6 +40,10 @@ public class DataController {
     private SolarData data;
     private FadeTransition transition1;
     private FadeTransition transition2;
+    private SolarPanel panel1;
+    private SolarPanel panel2;
+    private SolarPanel panel3;
+
     public DataController(){}
 
     @FXML
@@ -65,9 +69,9 @@ public class DataController {
                 t.setDaemon(true);
                 return t;
             });
-            SolarPanel panel1 = new SolarPanel(data);
-            SolarPanel panel2 = new SolarPanel(data);
-            SolarPanel panel3 = new SolarPanel(data);
+            panel1 = new SolarPanel(data, "Панель 1");
+            panel2 = new SolarPanel(data, "Панель 2");
+            panel3 = new SolarPanel(data, "Панель 3");
 
             transition1 = new FadeTransition(Duration.millis(500), generation1);
             transition2 = new FadeTransition(Duration.millis(500), generation2);
@@ -97,6 +101,14 @@ public class DataController {
         future2.cancel(false);
         future3.cancel(false);
     }
+    public void closeFirstSolarGeneration(){
+        panel1.setStopGenerationPanel();
+    }
+    public void startFirstSolarGeneration(){
+        panel1.setWorkGenerationPanel();
+    }
+
+
     public void setLabel(String p,String c,String cap){
         Platform.runLater(new Runnable() {
             @Override
