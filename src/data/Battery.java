@@ -20,7 +20,6 @@ public class Battery {
         }
     }
     public void consumptionCurrent(double current) {
-        if(capacity < current) new SolarBatteryException("Нет энергии для потребления");
         if(capacity < defaultCapacity) {
             this.capacity -= current;
         }

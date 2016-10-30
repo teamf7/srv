@@ -26,9 +26,10 @@ public class SolarData {
             this.power += power;
             this.current += current;
             count++;
-            if(count > 2)
+            if(count > 2){
+                data.updateSvg(this.current,battery.getCapacity());
                 setLabel();
-                data.updateSvg(current);
+            }
         }
     }
 

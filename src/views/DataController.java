@@ -6,8 +6,10 @@ import javafx.animation.Animation;
 import javafx.animation.FadeTransition;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.SVGPath;
 import javafx.util.Duration;
 
@@ -34,6 +36,8 @@ public class DataController {
     @FXML
         private SVGPath generation2;
     @FXML
+        private SVGPath  generation0;
+    @FXML
         private RadioButton rb1;
     @FXML
         private RadioButton rb2;
@@ -49,6 +53,7 @@ public class DataController {
     private SolarData data;
     private FadeTransition transition1;
     private FadeTransition transition2;
+    private FadeTransition transition3;
     private SolarPanel[] solarPanels;
 
     public DataController(){
@@ -71,7 +76,6 @@ public class DataController {
     public void startSolarGeneration() {
         System.out.println("start project");
         if (startGenerator) {
-            generation2.setVisible(true);
             ScheduledThreadPoolExecutor exec = new ScheduledThreadPoolExecutor(3, r -> {
                 Thread t = new Thread(r);
                 t.setDaemon(true);
@@ -80,29 +84,36 @@ public class DataController {
             solarPanels[0] = new SolarPanel(data, "Панель 1");
             solarPanels[1] = new SolarPanel(data, "Панель 2");
             solarPanels[2] = new SolarPanel(data, "Панель 3");
-            currentAnimation();
-            transition2 = new FadeTransition(Duration.millis(500), generation2);
+            transition1 = currentAnimation(transition1,generation1);
             animationSvgPath(transition1);
-            animationSvgPath(transition2);
             future1 = exec.scheduleAtFixedRate(solarPanels[0], 0, 1, TimeUnit.SECONDS);
             future2 = exec.scheduleAtFixedRate(solarPanels[1], 0, 1, TimeUnit.SECONDS);
             future3 = exec.scheduleAtFixedRate(solarPanels[2], 0, 1, TimeUnit.SECONDS);
             startGenerator = false;
         }
     }
-    public void updateSvg(double current){
-        if(current ==0 ){
-            System.out.println("Нет тока");
+    public void updateSvg(double current, double capacity){
+        if(current == 0 ){
+            stopSolarAnimationSVG(transition2, generation2);
+            generation0.setVisible(true);
+            transition3 = currentAnimation(transition3,generation0);
+            animationSvgPath(transition3);
+        }else {
+            transition2 = currentAnimation(transition2,generation2);
+            animationSvgPath(transition2);
         }
+
+
     }
 
-    public void currentAnimation(){
-        generation1.setVisible(true);
-        transition1 = new FadeTransition(Duration.millis(500), generation1);
+    public FadeTransition currentAnimation(FadeTransition transition,SVGPath nameSVG){
+        nameSVG.setVisible(true);
+        return transition = new FadeTransition(Duration.millis(500), nameSVG);
     }
-    public void stopSolarAnimationSVG(){
-        transition1.stop();
-        generation1.setVisible(false);
+
+    public void stopSolarAnimationSVG(FadeTransition transition,SVGPath nameSVG){
+        transition.stop();
+        nameSVG.setVisible(false);
     }
 
     public void animationSvgPath(FadeTransition transition){
@@ -115,9 +126,8 @@ public class DataController {
 
     public void closeSolarGeneration(){
         startGenerator = true;
-        stopSolarAnimationSVG();
-        transition2.stop();
-        generation2.setVisible(false);
+        stopSolarAnimationSVG(transition1, generation1);
+        stopSolarAnimationSVG(transition2, generation2);
         future1.cancel(false);
         future2.cancel(false);
         future3.cancel(false);
